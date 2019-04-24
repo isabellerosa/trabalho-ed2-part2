@@ -1,0 +1,66 @@
+LOGICA
+EXERCICIO 05    
+
+--estruturas--
+TreeSearchResult: guarda informações da arvore(quantidade de niveis) e lista de nós encontrados na busca
+TreeNodeResult: guarda o nó e em qual nivel foi encontrado
+
+buscaNo(arvore, valor, nivel, resultados){
+    se quantidade de niveis da arvore < lvl
+        incrementa quantidade de niveis da arvore
+    
+    se arvore for o que estamos procurando
+        cria elemento com no e lvl
+        adiciona elemento na lista de nos encontrados
+    
+    se arvore->direira não for no folha 
+        buscaNo(arvore->direita, valor, lvl+1, resultados)
+    
+    se arvore->esquerda não for no folha    
+        buscaNo(arvore->esquerda, valor, lvl+1, resultados)
+}
+
+EXERCICIO 09
+
+montaArvoreAritmetica(arvore, pilhaPolonesa)
+
+    se pilha não vazia
+        desempilha E
+        cria no N = E
+        se arvore estiver vazia
+            arvore = N
+            montaArvoreAritmetica(arvore, pilhaPolonesa)
+        se arvore->esquerdo vazio
+            arvore->esquerdo = N
+            se E for operação
+                montaArvoreAritmetica(N, pilhaPolonesa)
+        senao
+            se arvore->direito vazio
+                arvore->direito = N
+                se E for operacao
+                    montaArvoreAritmetica(N, pilhaPolonesa)
+        
+        se arvore tiver ambos nos
+            return
+        senao 
+            montaArvoreAritmetica(arvore, pilha)
+        
+EXERCICIO 12
+montaEquacaoParentizada(arvore, pilha){
+    se pilha vazia
+        instancia pilha
+    empilha ')'
+
+    se os filhos de arvore forem folhas
+        empilha arvore->direita
+        empilha arvore
+        empilha arvore->esquerda
+    senao
+        montaEquacaoParentizada(arvore->direita, pilha)
+        empilha arvore
+        montaEquacaoParentizada(arvore->esquerda, pilha)
+
+    empilha '('
+}
+
+EXERCICIO 22
